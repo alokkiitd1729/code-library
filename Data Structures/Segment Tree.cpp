@@ -20,7 +20,7 @@ struct ST {
     build(r, mid + 1, e);
     t[n] = max(t[l], t[r]);
   }
-  void upd(int n, int b, int e, int i, int x) {
+  void upd(int n, int b, int e, int i, int x) {// update at index i with x
     if (b > i || e < i) return;
     if (b == e && b == i) {
       t[n] = x;
@@ -31,9 +31,9 @@ struct ST {
     upd(r, mid + 1, e, i, x);
     t[n] = max(t[l], t[r]);
   }
-  int query(int n, int b, int e, int i, int j) {
-    if (b > j || e < i) return -inf;
-    if (b >= i && e <= j) return t[n];
+  int query(int n, int b, int e, int i, int j) {    // [i,j] range in which we want to qry
+    if (j<b || e < i) return -inf;
+    if (i<=b && e <= j) return t[n];
     int mid = (b + e) >> 1, l = n << 1, r = l | 1;
     int L = query(l, b, mid, i, j);
     int R = query(r, mid + 1, e, i, j);
