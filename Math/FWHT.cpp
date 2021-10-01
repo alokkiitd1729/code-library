@@ -90,20 +90,20 @@ ll poww(ll a, ll b) {
     ll c=poww(a,b/2); c*=c;c%=mod;
     return b%2?c*a%mod:c;
 }
-void FST(bool inv,int flag){
+void FST(bool inv,int op){
     for(int step=1;2*step<=sz;step*=2){
         for(int i=0;i<sz;i+=2*step){
             for(int j=0;j<step;j++){
                 ll &u=a[j+i],&v=a[j+step+i];
-                if(flag==AND)tie(u,v)=inv?make_pair((v-u+mod)%mod,u):make_pair(v,(u+v)%mod);//AND
-                if(flag==OR)tie(u,v)=inv?make_pair(v,(u-v+mod)%mod):make_pair((u+v)%mod,v);//OR
-                if(flag==XOR)tie(u,v)=make_pair((u+v)%mod,(u-v+mod)%mod);
+                if(op==AND)tie(u,v)=inv?make_pair((v-u+mod)%mod,u):make_pair(v,(u+v)%mod);//AND
+                if(op==OR)tie(u,v)=inv?make_pair(v,(u-v+mod)%mod):make_pair((u+v)%mod,v);//OR
+                if(op==XOR)tie(u,v)=make_pair((u+v)%mod,(u-v+mod)%mod);
             }
         }
     }
-    if(inv&&flag==XOR){
+    if(inv&&op==XOR){
         for(int i=0;i<sz;i++){
-            a[i]/=sz;  // may be mod inv?
+            a[i]/=sz;  // may be mod inv?  (NOTE modInv never going to be wrong so...)
         }
     }
 }
