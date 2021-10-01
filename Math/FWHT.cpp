@@ -75,8 +75,13 @@ int32_t main() {
 }
 // https://csacademy.com/contest/archive/task/and-closure/statement/
 //https://csacademy.com/blog/fast-fourier-transform-and-variations-of-it
+// https://codeforces.com/blog/entry/76177#comment-682763
 ########################################################################  short clean for -        AND/OR/XOR
-
+/*
+  problem - find smallest size of subset such that their OR/AND/XOR = given value.
+   we can solve it using same techinique O(Nlog(A_i)log(log(A_i)))... we can binary search on the size 
+   also size will be bounded by log(A_i). see this blog -    https://codeforces.com/blog/entry/76177#comment-682763
+*/
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
