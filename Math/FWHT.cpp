@@ -99,8 +99,8 @@ ll poww(ll a, ll b) {
 void FST(bool inv,int op){
     for(int step=1;2*step<=sz;step*=2){
         for(int i=0;i<sz;i+=2*step){
-            for(int j=0;j<step;j++){
-                ll &u=a[j+i],&v=a[j+step+i];
+            for(int j=i;j<i+step;j++){
+                ll &u=a[j],&v=a[j+step];
                 if(op==AND)tie(u,v)=inv?make_pair((v-u+mod)%mod,u):make_pair(v,(u+v)%mod);//AND
                 if(op==OR)tie(u,v)=inv?make_pair(v,(u-v+mod)%mod):make_pair((u+v)%mod,v);//OR
                 if(op==XOR)tie(u,v)=make_pair((u+v)%mod,(u-v+mod)%mod);
