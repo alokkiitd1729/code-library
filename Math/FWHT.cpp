@@ -74,6 +74,7 @@ int32_t main() {
   return 0;
 }
 // https://csacademy.com/contest/archive/task/and-closure/statement/
+//https://csacademy.com/blog/fast-fourier-transform-and-variations-of-it
 ########################################################################  short clean for -        AND/OR/XOR
 
 #include <bits/stdc++.h>
