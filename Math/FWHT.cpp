@@ -81,6 +81,12 @@ int32_t main() {
   problem - find smallest size of subset such that their OR/AND/XOR = given value.
    we can solve it using same techinique O(Nlog(A_i)log(log(A_i)))... we can binary search on the size 
    also size will be bounded by log(A_i). see this blog -    https://codeforces.com/blog/entry/76177#comment-682763
+ 
+ (2).  Find no of ways to choose tuple of size K (or of at most size K - not this will be a diff problem)
+   such that their AND/OR/XOR is equal to a given value.
+   Be careful for finding tuple of size EXACTLY K if zero is present in the array.
+   
+
 */
 #include <bits/stdc++.h>
 using namespace std;
