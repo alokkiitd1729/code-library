@@ -126,7 +126,8 @@ int main() {
     }
     a[0]++;
     FST(0,AND);
-    for (int i = 0; i < sz; i++) a[i] = poww(a[i], n);
+    for (int i = 0; i < sz; i++) a[i] = poww(a[i], n);// we are using n because polynomial will multiply n times
+                 // since subset size can be atmost n.
     FST(1,AND);
     for (int i = 0; i < sz; i++)
         if (a[i] != 0) cnt++;
