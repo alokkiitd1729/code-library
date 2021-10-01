@@ -74,3 +74,105 @@ int32_t main() {
   return 0;
 }
 // https://csacademy.com/contest/archive/task/and-closure/statement/
+
+
+
+
+#include <bits/stdc++.h>
+
+
+using namespace std;
+
+#define mp make_pair
+#define pb push_back
+#define ll long long
+
+#define sz (1 << 20)
+#define maxN (sz + 11)
+#define mod 1000000007
+
+ll n, i, x;
+vector<ll> data1(maxN,0);
+
+int cnt;
+
+void moddo(ll &x) {
+    while (x >= mod)
+        x -= mod;
+}
+
+void to_transform(ll dim) {
+    ll len, i, j;
+    ll u, v;
+
+    for (len = 1; 2 * len <= dim; len <<= 1) {
+        for (i = 0; i < dim; i += 2 * len) {
+            for (j = 0; j < len; j++) {
+                u = data1[i + j];
+                v = data1[i + len + j];
+
+                data1[i + j] = v;
+                data1[i + len + j] = (u + v);
+
+                moddo(data1[i + len + j]);
+            }
+        }
+    }
+}
+
+void inv_transform(ll dim) {
+    ll len, i, j;
+    ll u, v;
+
+    for (len = 1; 2 * len <= dim; len <<= 1) {
+        for (i = 0; i < dim; i += 2 * len) {
+            for (j = 0; j < len; j++) {
+                u = data1[i + j];
+                v = data1[i + len + j];
+
+                data1[i + j] = mod - u + v;
+                data1[i + len + j] = u;
+
+                moddo(data1[i + j]);
+            }
+        }
+    }
+}
+
+ll poww(ll a, ll b) {
+    ll ans = 1;
+
+    while (b > 0) {
+        if (b & 1) ans = (ans * a) % mod;
+        b >>= 1;
+        a = (a * a) % mod;
+    }
+
+    return ans;
+}
+
+
+
+int main()
+{
+    scanf("%lld", &n);
+    for (i = 1; i <= n; i++) {
+        scanf("%lld", &x);
+        data1[x]++;
+    }
+
+    data1[0]++;
+
+    to_transform(sz);
+    for (i = 0; i < sz; i++) data1[i] = poww(data1[i], n);
+    inv_transform(sz);
+
+    for (i = 0; i < sz; i++)
+        if (data1[i] != 0)
+            cnt++;
+
+    printf("%d\n", cnt);
+
+    return 0;
+}
+
